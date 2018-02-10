@@ -1,0 +1,156 @@
+//***采用独热码编码方式，减少译码的信号延迟。提高速度。
+//***代码编写时简化相同条目如：m0,m1->m[1:0].                  待做
+//***s_addr 输出可以作为内部连线来使用？
+`include "header/bus.h"
+module bus_top_test;
+	//*************时钟，复位
+	reg 		clk;
+	reg		reset;
+	
+	//*************主控独立信号
+	reg		m0_req_;
+	reg		m1_req_;
+	reg		m2_req_;
+	reg		m3_req_;
+	wire		m0_grnt_;		//输出的目的是告知cpu仲裁通过，可以使用总线了。
+	wire		m1_grnt_;
+	wire		m2_grnt_;
+	wire 		m3_grnt_;
+
+	reg	[29:0]	m0_addr;
+	reg		m0_as_;
+	reg		m0_rw;
+	reg	[31:0]	m0_wr_data;
+	reg	[29:0]	m1_addr;
+	reg		m1_as_;
+	reg		m1_rw;
+	reg	[31:0]	m1_wr_data;
+	reg	[29:0]	m2_addr;
+	reg		m2_as_;
+	reg		m2_rw;
+	reg	[31:0]	m2_wr_data;
+	reg	[29:0]	m3_addr;
+	reg		m3_as_;
+	reg		m3_rw;
+	reg	[31:0]	m3_wr_data;
+
+	//*************************地址译码器输出从属选择信号(相对于把从属内部译码器拿出来）
+	wire		s0_cs_;		//****片选cs与as地址选通信号共同决定从属rdy信号
+	wire		s1_cs_;
+	wire		s2_cs_;
+	wire		s3_cs_;
+	wire		s4_cs_;
+	wire		s5_cs_;
+	wire		s6_cs_;
+	wire		s7_cs_;
+
+	//*************************总线从属共享信号（控制相应从属）
+	wire	[29:0] 	s_addr;
+	wire		s_as_;
+	wire		s_rw;
+	wire	[31:0]	s_wr_data;
+	
+	//*************************总线从属独立信号（得到从属应答信号）
+	wire	[31:0]	s0_rd_data;
+	wire		s0_rdy_;
+	wire	[31:0]	s1_rd_data;
+	wire		s1_rdy_;
+	wire	[31:0]	s2_rd_data;
+	wire		s2_rdy_;
+	wire	[31:0]	s3_rd_data;
+	wire		s3_rdy_;
+	wire	[31:0]	s4_rd_data;
+	wire		s4_rdy_;
+	wire	[31:0]	s5_rd_data;
+	wire		s5_rdy_;
+	wire	[31:0]	s6_rd_data;
+	wire		s6_rdy_;
+	wire	[31:0]	s7_rd_data;
+	wire		s7_rdy_;
+	
+	//*************************总线主控共享信号
+	wire	[31:0]	m_rd_data;
+	wire		m_rdy_;
+
+
+	bus_arbiter	bus_arbiter0	(.clk(clk),.reset(reset),
+					 .m0_req_ (m0_req_),
+					 .m0_grnt_(m0_grnt_),
+					 .m1_req_ (m1_req_),
+					 .m1_grnt_(m1_grnt_),
+					 .m2_req_ (m2_req_),
+					 .m2_grnt_(m2_grnt_),
+					 .m3_req_ (m3_req_),
+					 .m3_grnt_(m3_grnt_)
+					);
+	bus_master_mux	bus_master_mux0	(.m0_addr(m0_addr),.m0_as_(m0_as_),.m0_rw(m0_rw),.m0_wr_data(m0_wr_data),.m0_grnt_(m0_grnt_),
+					 .m1_addr(m1_addr),.m1_as_(m1_as_),.m1_rw(m1_rw),.m1_wr_data(m1_wr_data),.m1_grnt_(m1_grnt_),
+					 .m2_addr(m2_addr),.m2_as_(m2_as_),.m2_rw(m2_rw),.m2_wr_data(m2_wr_data),.m2_grnt_(m2_grnt_),
+					 .m3_addr(m3_addr),.m3_as_(m3_as_),.m3_rw(m3_rw),.m3_wr_data(m3_wr_data),.m3_grnt_(m3_grnt_),
+					 .s_addr(s_addr),.s_as_(s_as_),.s_rw(s_rw),.s_wr_data(s_wr_data)
+					);
+	bus_addr_dec	bus_addr_dec0	(.s_addr(s_addr),.s0_cs_(s0_cs_),
+							 .s1_cs_(s1_cs_),
+							 .s2_cs_(s2_cs_),
+							 .s3_cs_(s3_cs_),
+							 .s4_cs_(s4_cs_),
+							 .s5_cs_(s5_cs_),
+							 .s6_cs_(s6_cs_),
+							 .s7_cs_(s7_cs_)
+					);
+	bus_slave_mux	bus_slave_mux0	(.s0_cs_(s0_cs_),.s0_rd_data(s0_rd_data),.s0_rdy_(s0_rdy_),
+					 .s1_cs_(s1_cs_),.s1_rd_data(s1_rd_data),.s1_rdy_(s1_rdy_),
+					 .s2_cs_(s2_cs_),.s2_rd_data(s2_rd_data),.s2_rdy_(s2_rdy_),
+					 .s3_cs_(s3_cs_),.s3_rd_data(s3_rd_data),.s3_rdy_(s3_rdy_),
+					 .s4_cs_(s4_cs_),.s4_rd_data(s4_rd_data),.s4_rdy_(s4_rdy_),
+					 .s5_cs_(s5_cs_),.s5_rd_data(s5_rd_data),.s5_rdy_(s5_rdy_),
+					 .s6_cs_(s6_cs_),.s6_rd_data(s6_rd_data),.s6_rdy_(s6_rdy_),
+					 .s7_cs_(s7_cs_),.s7_rd_data(s7_rd_data),.s7_rdy_(s7_rdy_),
+					 .m_rd_data(m_rd_data),.m_rdy_(m_rdy_)
+					);
+	 regfile 	regfile0	(
+		/******时钟和复位******/
+			.clk(clk),
+			.reset_(reset),
+		
+		/******访问接口******/
+			.addr(s_addr),
+			.d_in(s_wr_data),
+			.Bus(s0_rd_data),
+			.we_(s_rw),
+	 		.as_(s_as_),
+			.cs_(s0_cs_),
+			.rdy_(s0_rdy_)
+	);
+
+	always #50 clk = ~clk;
+	initial begin
+		#0	clk=1;reset=0;
+		#100	reset	=1;
+			m0_req_ = `ENABLE_;
+			m0_addr = 30'd0;
+			m0_rw	= 0;
+			m0_as_	= `ENABLE_;
+			m0_wr_data = 32'd22;
+		#100
+		#100	m0_req_ = `ENABLE_;
+			m0_addr = 30'd1;
+			m0_rw	= 1;
+			m0_as_	= `ENABLE_;
+			m0_wr_data = 32'd33;	 
+		#200	m0_req_ = `ENABLE_;
+			m0_addr = 30'd0;
+			m0_rw	= 1;
+			m0_as_	= `ENABLE_;
+			m0_wr_data = 32'd33;
+		#200	$finish;
+	end
+	
+	initial begin
+		$dumpfile("bus_top_test.vcd");
+		$dumpvars(0,bus_top_test);
+	end
+			
+					 
+endmodule
+

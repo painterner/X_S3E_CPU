@@ -1,0 +1,23 @@
+`include "CLK/x_s3e_dcm.v"
+module clk_gen(
+	input wire				clk_ref,
+	input wire				reset_sw,
+	output wire				clk,
+	output wire				clk_,
+	output wire				chip_reset
+);
+	wire					dcm_reset;
+	wire					locked;
+	assign dcm_reset		= (reset_sw == `RESET_ENABLE)? `ENABLE : `DISABLE;
+	assign chip_reset		= ((reset_sw == `RESET_ENABLE)||(locked == `DISABLE))? `ENABLE : `DISABLE;
+	
+	x_s3e_dcm x_3e_dcm(
+		.CLKIN_IN	(clk_ref),
+		.RST_IN		(dcm_reset),
+		.CLK0_OUT	(clk),
+		.CLK180_OUT (clk_),
+		.LOCKED_OUT	(locked)
+	);
+	
+	
+endmodule

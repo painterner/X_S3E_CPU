@@ -1,0 +1,6 @@
+0c008000   //ORI	r0,r0,0x8000           r0->00008000
+0c21ffff   //ORI	r1,r1,0xffff		r1->0000ffff
+3c000010   //SHLLI	r0,r0,16		r0->80000000
+2c011000   //SUBUR	r0,r1,r2		r2->7fff0001
+5c010004   //STW	r0,r1,0x0004		gpio_out->80000004->0ffff
+5c020004   //STW	r0,r2,0x0004		gpio_out->80000004->30001

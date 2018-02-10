@@ -1,0 +1,6 @@
+[0325/181742.529:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: 拒绝访问。 (0x5)
+[0325/181742.547:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0325/181742.548:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: 拒绝访问。 (0x5)
+[0325/181751.892:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: 拒绝访问。 (0x5)
+[0325/181751.902:ERROR:registration_protocol_win.cc(83)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0325/181751.903:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\temp\settings.dat: 拒绝访问。 (0x5)

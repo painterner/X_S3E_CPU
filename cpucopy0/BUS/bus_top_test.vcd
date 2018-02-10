@@ -1,0 +1,355 @@
+$date
+	Mon Jul 11 17:53:32 2016
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module bus_top_test $end
+$var wire 32 ! s1_rd_data [31:0] $end
+$var wire 1 " s1_rdy_ $end
+$var wire 32 # s2_rd_data [31:0] $end
+$var wire 1 $ s2_rdy_ $end
+$var wire 32 % s3_rd_data [31:0] $end
+$var wire 1 & s3_rdy_ $end
+$var wire 32 ' s4_rd_data [31:0] $end
+$var wire 1 ( s4_rdy_ $end
+$var wire 32 ) s5_rd_data [31:0] $end
+$var wire 1 * s5_rdy_ $end
+$var wire 32 + s6_rd_data [31:0] $end
+$var wire 1 , s6_rdy_ $end
+$var wire 32 - s7_rd_data [31:0] $end
+$var wire 1 . s7_rdy_ $end
+$var wire 32 / s_wr_data [31:0] $end
+$var wire 1 0 s_rw $end
+$var wire 1 1 s_as_ $end
+$var wire 30 2 s_addr [29:0] $end
+$var wire 1 3 s7_cs_ $end
+$var wire 1 4 s6_cs_ $end
+$var wire 1 5 s5_cs_ $end
+$var wire 1 6 s4_cs_ $end
+$var wire 1 7 s3_cs_ $end
+$var wire 1 8 s2_cs_ $end
+$var wire 1 9 s1_cs_ $end
+$var wire 1 : s0_rdy_ $end
+$var wire 32 ; s0_rd_data [31:0] $end
+$var wire 1 < s0_cs_ $end
+$var wire 1 = m_rdy_ $end
+$var wire 32 > m_rd_data [31:0] $end
+$var wire 1 ? m3_grnt_ $end
+$var wire 1 @ m2_grnt_ $end
+$var wire 1 A m1_grnt_ $end
+$var wire 1 B m0_grnt_ $end
+$var reg 1 C clk $end
+$var reg 30 D m0_addr [29:0] $end
+$var reg 1 E m0_as_ $end
+$var reg 1 F m0_req_ $end
+$var reg 1 G m0_rw $end
+$var reg 32 H m0_wr_data [31:0] $end
+$var reg 30 I m1_addr [29:0] $end
+$var reg 1 J m1_as_ $end
+$var reg 1 K m1_req_ $end
+$var reg 1 L m1_rw $end
+$var reg 32 M m1_wr_data [31:0] $end
+$var reg 30 N m2_addr [29:0] $end
+$var reg 1 O m2_as_ $end
+$var reg 1 P m2_req_ $end
+$var reg 1 Q m2_rw $end
+$var reg 32 R m2_wr_data [31:0] $end
+$var reg 30 S m3_addr [29:0] $end
+$var reg 1 T m3_as_ $end
+$var reg 1 U m3_req_ $end
+$var reg 1 V m3_rw $end
+$var reg 32 W m3_wr_data [31:0] $end
+$var reg 1 X reset $end
+$scope module bus_addr_dec0 $end
+$var wire 3 Y s_index [2:0] $end
+$var wire 30 Z s_addr [29:0] $end
+$var reg 1 < s0_cs_ $end
+$var reg 1 9 s1_cs_ $end
+$var reg 1 8 s2_cs_ $end
+$var reg 1 7 s3_cs_ $end
+$var reg 1 6 s4_cs_ $end
+$var reg 1 5 s5_cs_ $end
+$var reg 1 4 s6_cs_ $end
+$var reg 1 3 s7_cs_ $end
+$upscope $end
+$scope module bus_arbiter0 $end
+$var wire 1 C clk $end
+$var wire 1 F m0_req_ $end
+$var wire 1 K m1_req_ $end
+$var wire 1 P m2_req_ $end
+$var wire 1 U m3_req_ $end
+$var wire 1 X reset $end
+$var reg 1 B m0_grnt_ $end
+$var reg 1 A m1_grnt_ $end
+$var reg 1 @ m2_grnt_ $end
+$var reg 1 ? m3_grnt_ $end
+$var reg 2 [ owner [1:0] $end
+$upscope $end
+$scope module bus_master_mux0 $end
+$var wire 30 \ m0_addr [29:0] $end
+$var wire 1 E m0_as_ $end
+$var wire 1 B m0_grnt_ $end
+$var wire 1 G m0_rw $end
+$var wire 32 ] m0_wr_data [31:0] $end
+$var wire 30 ^ m1_addr [29:0] $end
+$var wire 1 J m1_as_ $end
+$var wire 1 A m1_grnt_ $end
+$var wire 1 L m1_rw $end
+$var wire 32 _ m1_wr_data [31:0] $end
+$var wire 30 ` m2_addr [29:0] $end
+$var wire 1 O m2_as_ $end
+$var wire 1 @ m2_grnt_ $end
+$var wire 1 Q m2_rw $end
+$var wire 32 a m2_wr_data [31:0] $end
+$var wire 30 b m3_addr [29:0] $end
+$var wire 1 T m3_as_ $end
+$var wire 1 ? m3_grnt_ $end
+$var wire 1 V m3_rw $end
+$var wire 32 c m3_wr_data [31:0] $end
+$var reg 30 d s_addr [29:0] $end
+$var reg 1 1 s_as_ $end
+$var reg 1 0 s_rw $end
+$var reg 32 e s_wr_data [31:0] $end
+$upscope $end
+$scope module bus_slave_mux0 $end
+$var wire 1 < s0_cs_ $end
+$var wire 1 9 s1_cs_ $end
+$var wire 32 f s1_rd_data [31:0] $end
+$var wire 1 " s1_rdy_ $end
+$var wire 1 8 s2_cs_ $end
+$var wire 32 g s2_rd_data [31:0] $end
+$var wire 1 $ s2_rdy_ $end
+$var wire 1 7 s3_cs_ $end
+$var wire 32 h s3_rd_data [31:0] $end
+$var wire 1 & s3_rdy_ $end
+$var wire 1 6 s4_cs_ $end
+$var wire 32 i s4_rd_data [31:0] $end
+$var wire 1 ( s4_rdy_ $end
+$var wire 1 5 s5_cs_ $end
+$var wire 32 j s5_rd_data [31:0] $end
+$var wire 1 * s5_rdy_ $end
+$var wire 1 4 s6_cs_ $end
+$var wire 32 k s6_rd_data [31:0] $end
+$var wire 1 , s6_rdy_ $end
+$var wire 1 3 s7_cs_ $end
+$var wire 32 l s7_rd_data [31:0] $end
+$var wire 1 . s7_rdy_ $end
+$var wire 1 : s0_rdy_ $end
+$var wire 32 m s0_rd_data [31:0] $end
+$var reg 32 n m_rd_data [31:0] $end
+$var reg 1 = m_rdy_ $end
+$upscope $end
+$scope module regfile0 $end
+$var wire 32 o Bus [31:0] $end
+$var wire 30 p addr [29:0] $end
+$var wire 1 1 as_ $end
+$var wire 1 C clk $end
+$var wire 1 < cs_ $end
+$var wire 32 q d_in [31:0] $end
+$var wire 1 X reset_ $end
+$var wire 1 0 we_ $end
+$var reg 32 r d_out [31:0] $end
+$var reg 1 : rdy_ $end
+$var integer 32 s i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx s
+bx r
+bx q
+bx p
+bx o
+b0 n
+bx m
+bz l
+bz k
+bz j
+bz i
+bz h
+bz g
+bz f
+bx e
+bx d
+bx c
+bx b
+bx a
+bx `
+bx _
+bx ^
+bx ]
+bx \
+bx [
+bx Z
+bx Y
+0X
+bx W
+xV
+xU
+xT
+bx S
+bx R
+xQ
+xP
+xO
+bx N
+bx M
+xL
+xK
+xJ
+bx I
+bx H
+xG
+xF
+xE
+bx D
+1C
+xB
+xA
+x@
+x?
+b0 >
+0=
+x<
+bx ;
+x:
+x9
+x8
+x7
+x6
+x5
+x4
+x3
+bx 2
+x1
+x0
+bx /
+z.
+bz -
+z,
+bz +
+z*
+bz )
+z(
+bz '
+z&
+bz %
+z$
+bz #
+z"
+bz !
+$end
+#1
+1?
+1@
+1A
+0B
+b0 [
+1:
+b0 ;
+b0 m
+b0 o
+b0 r
+#50
+0C
+#100
+1=
+13
+14
+15
+16
+17
+18
+19
+0<
+b0 Y
+b10110 /
+b10110 e
+b10110 q
+00
+01
+b0 2
+b0 Z
+b0 d
+b0 p
+1C
+b10110 H
+b10110 ]
+0E
+0G
+b0 D
+b0 \
+0F
+1X
+#150
+0C
+#151
+b10110 >
+b10110 n
+b10110 ;
+b10110 m
+b10110 o
+b10110 r
+#200
+1C
+#201
+0=
+0:
+#250
+0C
+#300
+b100001 /
+b100001 e
+b100001 q
+10
+b1 2
+b1 Z
+b1 d
+b1 p
+1C
+b100001 H
+b100001 ]
+1G
+b1 D
+b1 \
+#350
+0C
+#351
+bx >
+bx n
+bx ;
+bx m
+bx o
+bx r
+#400
+1C
+#450
+0C
+#500
+b0 2
+b0 Z
+b0 d
+b0 p
+1C
+b0 D
+b0 \
+#550
+0C
+#551
+b10110 >
+b10110 n
+b10110 ;
+b10110 m
+b10110 o
+b10110 r
+#600
+1C
+#650
+0C
+#700
+1C

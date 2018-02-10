@@ -1,0 +1,139 @@
+`include "header/firstglobal.h"
+`include "header/cpuglobal.h"
+ `define SIM_CYCLE 10000
+module chip_top_test;	 
+		reg				clk_ref;
+		reg 			reset_sw;
+		wire			uart_tx;
+		wire			uart_rx;
+		wire	[3:0]	gpio_in;
+		wire	[17:0]	gpio_out;
+		wire	[15:0]	gpio_io;
+		
+		wire			rx_busy;
+		wire			rx_end;
+		wire	[7:0]	rx_data;
+		parameter 		STEP=100;	
+		wire			tx;
+		reg				rx;
+	chip_top chip_top_model(
+
+		.clk_ref			(clk_ref	),	      
+		.reset_sw           (reset_sw   ),       
+		.rx       	        (rx       	),                       
+    	.tx                 (tx         ),                          
+		.gpio_in            (gpio_in    ),        
+		.gpio_out           (gpio_out   ),        
+		.gpio_io            (gpio_io    )       
+	); 
+		
+	`ifdef	`IMPLEMENT_GPIO		//¥Ó‘ÿgpio
+		`ifdef	GPIO_IN_CH			//¥Ó‘ÿ ‰»Î∂Àø⁄
+			always @ (gpio_in)	
+				$display($time,"gpio_in changed :%b",gpio_in);
+		`endif
+		`ifdef	GPIO_OUT_CH
+			always @(gpio_out)	
+				$display($time,"gpio_out changed:%b",gpio_out);
+		`endif
+		`ifdef GPIO_IO_CH
+			always @(gpio_out)
+				$display($time,"gpio_io changed:%b",gpio_io);
+		`endif
+	`endif
+	
+	`ifdef	`IMPLEMENT_UART   //¥Ó‘ÿUART
+		assign	uart_rx		= `HIGH;
+		//	assign	uart_rx	= uart_tx;
+		
+		uart_rx	uart_model(                                                    
+			.clk     	(chip_top_model.clk    )      ,                      
+			.reset     (chip_top_model.chip_reset  )  ,                                		                     
+        	.rx_busy   (rx_busy)                ,      
+        	.rx_end    (rx_end )                ,      
+        	.rx_data    (rx_data )              ,
+        	
+        	.rx        (uart_tx     )                    
+        	                                                                 
+        );    
+        
+        always @ (posedge chip_top_model.clk)	
+        	if(rx_end == `ENABLE)	
+        		$write("%c",rx_data);
+      `endif
+      
+  /*    always @ (chip_top_model.chip0.rom0.as_)                        
+	$display("%h,%h,%h",	chip_top_model.chip0.rom0.cs_,      
+					chip_top_model.chip0.rom0.as_,              
+					chip_top_model.chip0.rom0.rdy_);            
+	*/
+      //******************************************************≤‚ ‘”√¿˝
+      always # 50 clk_ref = ~clk_ref;
+      initial begin
+      	# 0 begin
+      		clk_ref				<= `HIGH;
+      		reset_sw			<= `RESET_ENABLE;
+      	end
+      	# (STEP/2)
+      	# (STEP/4) begin
+      		$readmemh("test.dat",chip_top_model.chip0.rom0.x_s3e_sprom0.gpr);
+      		$readmemh("test.dat",chip_top_model.chip0.cpu_top0.spm0.x_s3e_dpram0.gpr);
+      	end
+      	# (STEP *2)
+      		reset_sw			<= `RESET_DISABLE;    
+      	# STEP    
+      	
+      		$display("%h",chip_top_model.chip0.rom0.x_s3e_sprom0.gpr[0]);
+      		$display("%h",chip_top_model.chip0.rom0.x_s3e_sprom0.gpr[1]);
+      		$display("%h",chip_top_model.chip0.rom0.x_s3e_sprom0.gpr[2]);
+      		$display("%h",chip_top_model.chip0.rom0.x_s3e_sprom0.gpr[3]);
+      	
+      	
+      	
+      	
+      		
+      	# (STEP *8)
+      		$display("%h,%h,%h,%h", chip_top_model.chip0.bus_top0.bus_slave_mux0.m_rd_data,
+      								chip_top_model.chip0.bus_top0.bus_slave_mux0.m_rdy_,
+      								chip_top_model.chip0.bus_top0.s0_cs_,
+      								chip_top_model.chip0.bus_top0.m0_grnt_);
+      								
+      		$display("%h,%h,%h,%h", chip_top_model.chip0.bus_top0.bus_slave_mux0.s0_rd_data,
+      								chip_top_model.chip0.bus_top0.bus_slave_mux0.s0_rdy_,
+      								chip_top_model.chip0.bus_top0.s0_cs_,
+      								chip_top_model.chip0.bus_top0.m0_grnt_);   
+      		$display("%h,%h,%h,%h", chip_top_model.chip0.bus_top0.m_rd_data,  
+									chip_top_model.chip0.bus_top0.m_rdy_,     
+									chip_top_model.chip0.bus_top0.s0_cs_,                    
+									chip_top_model.chip0.bus_top0.m0_grnt_);                 
+						                                          
+			$display("%h,%h,%h,%h", chip_top_model.chip0.bus_top0.s0_rd_data, 
+									chip_top_model.chip0.bus_top0.s0_rdy_,    
+									chip_top_model.chip0.bus_top0.s0_cs_,                    
+									chip_top_model.chip0.bus_top0.m0_grnt_); 
+									 
+		
+			$display("%h",chip_top_model.chip0.cpu_top0.if_top0.if_reg0.insn) ;             
+            $display("%h,%h,%h",chip_top_model.chip0.cpu_top0.if_top0.bus_if0.bus_rd_data,
+            			  chip_top_model.chip0.cpu_top0.if_top0.bus_if0.rd_data,
+            			  chip_top_model.chip0.cpu_top0.if_top0.bus_if0.rd_buf) ;
+      								
+    
+      	
+      	//# (STEP *20)
+      	//	reset_sw			<= `RESET_DISABLE;
+      	
+      	
+      	# (STEP*`SIM_CYCLE)	
+      		$finish;
+      end
+      
+      //****************************************************** ‰≥ˆ≤®–Œ
+      initial begin	
+      	$dumpfile("chip_top.vcd");
+      	$dumpvars(0,chip_top_model);
+      end
+      	
+endmodule
+      		 		
+                                                                     

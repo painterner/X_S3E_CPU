@@ -1,0 +1,52 @@
+//`include "header/firstglobal.h"//
+`include "header/cpuglobal.h"
+module alu(
+	input wire	[`WordDataBus]				in_0,
+	input wire	[`WordDataBus]				in_1,
+	input wire	[`AluOpBus]					op,
+	
+	output reg	[`WordDataBus]				out,
+	output reg								of
+	
+);
+
+	
+	wire signed [`WordDataBus]	s_in_0		= $signed(in_0);
+	wire signed [`WordDataBus]	s_in_1		= $signed(in_1);
+	wire signed [`WordDataBus]	s_out		= $signed(out);
+	
+	always @ * 
+		case(op)
+			`ALU_OP_AND		:	out			= in_0 & in_1;
+			`ALU_OP_OR		:	out			= in_0 | in_1;	
+			`ALU_OP_XOR		:	out			= in_0 ^ in_1;
+			`ALU_OP_ADDS	:	out			= in_0 + in_1;
+			`ALU_OP_ADDU	:	out			= in_0 + in_1;
+			`ALU_OP_SUBS	:	out			= in_0 - in_1;
+			`ALU_OP_SUBU	:	out			= in_0 - in_1;
+			`ALU_OP_SHRL	:	out			= in_0 >> in_1[`ShAmountLoc];
+			`ALU_OP_SHLL	:	out			= in_0 << in_1[`ShAmountLoc];
+			default			:	out			=in_0;
+		endcase  
+		
+	always @(*)
+		case (op)
+			`ALU_OP_ADDS	:	
+				if(((s_in_0 > 0)&&(s_in_1 > 0) && (s_out < 0)) ||
+				   ((s_in_0 < 0)&&(s_in_1 < 0) && (s_out > 0)))
+				   of				= `ENABLE;
+				else
+				   of				= `DISABLE;           
+			`ALU_OP_SUBS	:	                                      
+				if(((s_in_0 < 0)&&(s_in_1 > 0) && (s_out > 0)) ||     
+	        	   ((s_in_0 > 0)&&(s_in_1 < 0) && (s_out < 0)))       
+            	   of				= `ENABLE;                        
+            	else                                                  
+            	   of				= `DISABLE;  
+           	default			:
+           		   of				= `DISABLE;
+        endcase
+
+endmodule 
+
+                     

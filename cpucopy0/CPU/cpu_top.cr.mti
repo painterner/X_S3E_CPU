@@ -1,0 +1,58 @@
+D:/modelsim/CPU_TOP/if_top.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\if_top.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module if_reg
+-- Compiling module bus_if
+-- Compiling module if_top
+
+Top level modules:
+	if_top
+
+} {} {}} D:/modelsim/CPU_TOP/mem_top.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\mem_top.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module mem_ctrl
+-- Compiling module mem_reg
+-- Compiling module mem_top
+
+Top level modules:
+	mem_top
+
+} {} {}} D:/modelsim/CPU_TOP/gpr.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\gpr.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module gpr
+
+Top level modules:
+	gpr
+
+} {} {}} D:/modelsim/CPU_TOP/ctrl.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\ctrl.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module ctrl
+
+Top level modules:
+	ctrl
+
+} {} {}} D:/modelsim/CPU_TOP/id_top.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\id_top.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module decoder
+-- Compiling module id_reg
+-- Compiling module id_top
+
+Top level modules:
+	id_top
+
+} {} {}} D:/modelsim/CPU_TOP/ex_top.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\ex_top.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module alu
+-- Compiling module ex_reg
+-- Compiling module ex_top
+
+Top level modules:
+	ex_top
+
+} {} {}} D:/modelsim/CPU_TOP/spm.v {1 {vlog -work work -vopt -nocovercells {D:\modelsim\CPU_TOP\spm.v}
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module spm
+
+Top level modules:
+	spm
+
+} {} {}}

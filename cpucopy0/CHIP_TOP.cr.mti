@@ -1,0 +1,98 @@
+D:/modelsim/CHIP_TOP/chip_top_test.v {2 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/chip_top_test.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module chip_top_test
+** Warning: D:/modelsim/CHIP_TOP/chip_top_test.v(30): (vlog-2638) Bad name in ifdef macro: `.
+** Warning: D:/modelsim/CHIP_TOP/chip_top_test.v(45): (vlog-2638) Bad name in ifdef macro: `.
+
+Top level modules:
+	chip_top_test
+
+} {} {}} D:/modelsim/CHIP_TOP/timer.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/timer.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module timer
+
+Top level modules:
+	timer
+
+} {} {}} D:/modelsim/CHIP_TOP/cpu_top.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/cpu_top.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module ctrl
+-- Compiling module if_reg
+-- Compiling module bus_if
+-- Compiling module if_top
+-- Compiling module decoder
+-- Compiling module id_reg
+-- Compiling module id_top
+-- Compiling module alu
+-- Compiling module ex_reg
+-- Compiling module ex_top
+-- Compiling module mem_ctrl
+-- Compiling module mem_reg
+-- Compiling module mem_top
+-- Compiling module x_s3e_dpram
+-- Compiling module spm
+-- Compiling module gpr
+-- Compiling module cpu_top
+
+Top level modules:
+	cpu_top
+
+} {} {}} D:/modelsim/CHIP_TOP/rom.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/rom.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module x_s3e_sprom
+-- Compiling module rom
+
+Top level modules:
+	rom
+
+} {} {}} D:/modelsim/CHIP_TOP/uart_top.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/uart_top.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module uart_ctrl
+-- Compiling module uart_rx
+-- Compiling module uart_tx
+-- Compiling module uart_top
+
+Top level modules:
+	uart_top
+
+} {} {}} D:/modelsim/CHIP_TOP/chip_top.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/chip_top.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module chip_top
+
+Top level modules:
+	chip_top
+
+} {} {}} D:/modelsim/CHIP_TOP/gpio.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/gpio.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module gpio
+
+Top level modules:
+	gpio
+
+} {} {}} D:/modelsim/CHIP_TOP/clk_gen.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/clk_gen.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module x_s3e_dcm
+-- Compiling module clk_gen
+
+Top level modules:
+	clk_gen
+
+} {} {}} D:/modelsim/CHIP_TOP/bus_top.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/bus_top.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module bus_addr_dec
+-- Compiling module bus_arbiter
+-- Compiling module bus_master_mux
+-- Compiling module bus_slave_mux
+-- Compiling module bus_top
+
+Top level modules:
+	bus_top
+
+} {} {}} D:/modelsim/CHIP_TOP/chip.v {1 {vlog -work work -vopt -nocovercells D:/modelsim/CHIP_TOP/chip.v
+Model Technology ModelSim SE-64 vlog 10.0c Compiler 2011.07 Jul 21 2011
+-- Compiling module chip
+
+Top level modules:
+	chip
+
+} {} {}}

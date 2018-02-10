@@ -1,0 +1,15 @@
+[Project ID]
+	Signature=UE Proj: v.1
+[Project Information]
+	Use Relative Directory=1
+	Relative to Project File=1
+[Files]
+	0=.\header\
+	1=timer.v
+	2=gpio.v
+	3=uart_tx.v
+	4=uart_rx.v
+	5=uart_ctrl.v
+	6=uart_top.v
+[Group]
+	0=header

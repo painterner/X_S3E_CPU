@@ -1,0 +1,676 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\modelsim\CPU_TOP
+T_opt
+Z1 VjnXR3`iR:Tmdb86MgVbLB0
+Z2 04 8 4 work chip_top fast 0
+Z3 =1-74e543e96765-578da5e3-20-58c
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+Z5 n@_opt
+Z6 OL;O;10.0c;49
+Z7 dD:\modelsim\CPU_TOP
+T_opt1
+Z8 Vj0h5_RZ7ck7[l9cdlZOaA3
+Z9 04 13 4 work chip_top_test fast 0
+Z10 =1-74e543e96765-579f4f4b-269-30d8
+R4
+Z11 n@_opt1
+R6
+R7
+valu
+Z12 Ibg;o]n6iO9Tlmj2UEecdB1
+Z13 VIFgM3?8MegPO8FF=N39D[1
+Z14 dD:\modelsim\CHIP_TOP
+Z15 w1470056443
+Z16 FCPU/EX/alu.v
+Z17 8D:/modelsim/CHIP_TOP/cpu_top.v
+Z18 FD:/modelsim/CHIP_TOP/cpu_top.v
+L0 3
+Z19 OL;L;10.0c;49
+r1
+31
+Z20 !s108 1470058308.611000
+Z21 !s107 CPU/gpr.v|CPU/STORE/x_s3e_dpram.v|CPU/spm.v|CPU/MEM/mem_reg.v|CPU/MEM/mem_ctrl.v|CPU/mem_top.v|CPU/EX/ex_reg.v|CPU/EX/alu.v|CPU/ex_top.v|CPU/ID/id_reg.v|CPU/ID/decoder.v|CPU/id_top.v|CPU/IF/bus_if.v|CPU/IF/if_reg.v|header/bus.h|CPU/if_top.v|header/spm.h|header/rom.h|CPU/ctrl.v|header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|D:/modelsim/CHIP_TOP/cpu_top.v|
+Z22 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/cpu_top.v|
+Z23 !s102 -nocovercells
+Z24 o-work work -nocovercells -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+Z25 !s100 UNVg=m9CeoOFNe65f5W3z2
+!s85 0
+vbus_addr_dec
+Z26 I^XP1_`9`m5@:XRz0Vn^GU2
+Z27 VnCdW_7XzkQ^[4[XeAa@gn2
+R14
+Z28 w1468991671
+Z29 FBUS/bus_addr_dec.v
+Z30 8D:/modelsim/CHIP_TOP/bus_top.v
+Z31 FD:/modelsim/CHIP_TOP/bus_top.v
+L0 4
+R19
+r1
+31
+Z32 !s108 1468991689.122000
+Z33 !s107 BUS/bus_slave_mux.v|BUS/bus_master_mux.v|BUS/bus_arbiter.v|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|BUS/bus_addr_dec.v|header/bus.h|D:/modelsim/CHIP_TOP/bus_top.v|
+Z34 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/bus_top.v|
+R23
+R24
+Z35 !s100 8GfGcjlMY4<Vc=Q@IDafm3
+!s85 0
+vbus_arbiter
+Z36 IkIJS[a0V9gQfnnm88kQo@2
+Z37 VooeD>o[o6k;=`Z3;0hN>S0
+R14
+R28
+Z38 FBUS/bus_arbiter.v
+R30
+R31
+L0 5
+R19
+r1
+31
+R32
+R33
+R34
+R23
+R24
+Z39 !s100 @N_dS;=c_JIiGf=CELQa41
+!s85 0
+vbus_if
+Z40 Ie8^?hF`]Mik6E4G>72KLc2
+Z41 VdaKf5Z>dU3;_L@[Z<;I<:1
+R14
+Z42 w1470048546
+Z43 FCPU/IF/bus_if.v
+R17
+R18
+L0 6
+R19
+r1
+31
+Z44 !s108 1470048700.527000
+R21
+R22
+R23
+R24
+Z45 !s100 e_H`9BM0aNeV460ERW?L_1
+!s85 0
+vbus_master_mux
+Z46 I]o[Ik4<B9X?@[1Q?Z;NAg0
+Z47 VlifOLl5;XYRDMkVEnJNH=1
+R14
+R28
+Z48 FBUS/bus_master_mux.v
+R30
+R31
+L0 3
+R19
+r1
+31
+R32
+R33
+R34
+R23
+R24
+Z49 !s100 KADffI[fXlQ<:Wn?5gM^51
+!s85 0
+vbus_slave_mux
+Z50 IHe:OzLnPa:[IjWIZblEEo1
+Z51 VgK3a[JOR5XI<0RPW32d]R3
+R14
+R28
+Z52 FBUS/bus_slave_mux.v
+R30
+R31
+L0 3
+R19
+r1
+31
+R32
+R33
+R34
+R23
+R24
+Z53 !s100 6K8`R_Z_cVbZQBF:Di^5n2
+!s85 0
+vbus_top
+Z54 IVz3K;OB<VC77kjnA8z7h_0
+Z55 VZZWkeO5gnh`zUWzf5XJ[>1
+R14
+R28
+R30
+R31
+L0 9
+R19
+r1
+31
+R32
+R33
+R34
+R23
+R24
+Z56 !s100 [V<lRc>YB1h7]e<??=BVI3
+!s85 0
+vchip
+Z57 IMamXmnhHmkQ`jF2KRYKO00
+Z58 VWGlfWfFN?nG[37?^d[iGV3
+R14
+Z59 w1468989961
+Z60 8D:/modelsim/CHIP_TOP/chip.v
+Z61 FD:/modelsim/CHIP_TOP/chip.v
+L0 4
+R19
+r1
+31
+R23
+R24
+Z62 !s100 cHnk5Wgk_<=_aUTh@0BG[1
+Z63 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/chip.v|
+Z64 !s108 1468991689.582000
+Z65 !s107 header/uart.h|header/gpio.h|header/timer.h|header/ioglobal.h|header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|D:/modelsim/CHIP_TOP/chip.v|
+!s85 0
+vchip_top
+Z66 I5@D;3bKFfMAYW;k<cPBA03
+Z67 V1d<Ez82nV<ffJNgLOYlf]3
+R14
+Z68 w1468916759
+Z69 8D:/modelsim/CHIP_TOP/chip_top.v
+Z70 FD:/modelsim/CHIP_TOP/chip_top.v
+L0 2
+R19
+r1
+31
+R23
+R24
+Z71 !s100 Ybk>QII[l<6TMILQS>mAR2
+Z72 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/chip_top.v|
+Z73 !s108 1468991689.772000
+Z74 !s107 header/uart.h|header/gpio.h|header/timer.h|header/ioglobal.h|D:/modelsim/CHIP_TOP/chip_top.v|
+!s85 0
+vchip_top_test
+Z75 IS9CblEIRKSPWg46hCh=Gh3
+Z76 VeFOO3:da>nYWmb?SIVeSe1
+R14
+Z77 w1468937285
+Z78 8D:/modelsim/CHIP_TOP/chip_top_test.v
+Z79 FD:/modelsim/CHIP_TOP/chip_top_test.v
+L0 4
+R19
+r1
+31
+R23
+R24
+Z80 !s100 K>=7BB]N^7Om`kPIljh4a3
+Z81 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/chip_top_test.v|
+Z82 !s108 1468991692.893000
+Z83 !s107 header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|D:/modelsim/CHIP_TOP/chip_top_test.v|
+!s85 0
+vclk_gen
+Z84 I84471m9]lH5R?:hRS0cL<2
+Z85 VJd6JdEa[5G[1>oGUGSeC;3
+R14
+Z86 w1468935844
+Z87 8D:/modelsim/CHIP_TOP/clk_gen.v
+Z88 FD:/modelsim/CHIP_TOP/clk_gen.v
+L0 3
+R19
+r1
+31
+Z89 !s108 1468991689.942000
+Z90 !s107 header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|CLK/x_s3e_dcm.v|D:/modelsim/CHIP_TOP/clk_gen.v|
+Z91 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/clk_gen.v|
+R23
+R24
+Z92 !s100 ]E__JUO:jIA:OhR7W6]fS3
+!s85 0
+vcpu_top
+Z93 IiPEbP^Cbzb4nSFZfa65OQ1
+Z94 VLKmE:2GVARiG8lgQU`dCe2
+R14
+Z95 w1468991527
+R17
+R18
+L0 10
+R19
+r1
+31
+Z96 !s108 1468991690.192000
+R21
+R22
+R23
+R24
+Z97 !s100 ]UlN6SJRX6?nN8icHG8N23
+!s85 0
+vctrl
+Z98 ITM45>5LFK_C[^?^d[WROZ1
+Z99 V0`1L=8a29?Yi^i2GRz_Mk3
+R14
+R95
+Z100 FCPU/ctrl.v
+R17
+R18
+L0 6
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z101 !s100 ML6[29nb]3Ek?bW0gMBfS2
+!s85 0
+vdecoder
+Z102 IP^<CFgT8BJC66_KgeKdNE0
+Z103 VPCCaz2ORMaI[>CB9n3i:m0
+R14
+Z104 w1469079216
+Z105 FCPU/ID/decoder.v
+R17
+R18
+L0 3
+R19
+r1
+31
+Z106 !s108 1469079262.315000
+R21
+R22
+R23
+R24
+Z107 !s100 hLVRKmJVRe_E;LdgT0nKV0
+!s85 0
+vex_reg
+Z108 IhTT0j87ZM9YmMXg]So`FJ2
+Z109 VaLDXb[T>h<SgZGe?e6BH;0
+R14
+R95
+Z110 FCPU/EX/ex_reg.v
+R17
+R18
+L0 3
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z111 !s100 UX8KVGRWHmXjH=b86SeFT3
+!s85 0
+vex_top
+Z112 ID@fQ_``z1n[VU2;Tbck8h1
+Z113 VlMOCho?F5_VAMfkO::A:J0
+R14
+R95
+Z114 FCPU/ex_top.v
+R17
+R18
+L0 6
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z115 !s100 b^SVDT<k6XMgFbR@C5<I91
+!s85 0
+vgpio
+Z116 IK<37z;@f>JVSUooZdTo5T1
+Z117 Vz]gaVem<3MP_l:ILD`3;@0
+R14
+Z118 w1468834795
+Z119 8D:/modelsim/CHIP_TOP/gpio.v
+Z120 FD:/modelsim/CHIP_TOP/gpio.v
+L0 4
+R19
+r1
+31
+R23
+R24
+Z121 !s100 MWP<5jSLhTVP?l>?RePC50
+Z122 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/gpio.v|
+Z123 !s108 1468991691.833000
+Z124 !s107 header/uart.h|header/gpio.h|header/timer.h|header/ioglobal.h|header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|D:/modelsim/CHIP_TOP/gpio.v|
+!s85 0
+vgpr
+Z125 IHiVXXAO>zIlK9N44fMc^O2
+Z126 VgF_jSb?m>HQLcQEWH58@L0
+R14
+R95
+Z127 FCPU/gpr.v
+R17
+R18
+L0 4
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z128 !s100 PjOaZjM81ORFbPPhDk3VN0
+!s85 0
+vid_reg
+Z129 IZ>JgV8BW7_Ea^DE:mI1@d0
+Z130 V07TdmAdURz1kgzzk^mV4d2
+R14
+Z131 w1469025990
+Z132 FCPU/ID/id_reg.v
+R17
+R18
+L0 3
+R19
+r1
+31
+Z133 !s108 1469028028.561000
+R21
+R22
+R23
+R24
+Z134 !s100 ;z8koN7Xm0>TOLHBG=X?i0
+!s85 0
+vid_top
+Z135 IdCA?eBd0?SDL843>KXUKh3
+Z136 V:U:<H?F3]bTH?LYXa]OeF2
+R14
+R95
+Z137 FCPU/id_top.v
+R17
+R18
+L0 5
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z138 !s100 hje7hLLRMfnfU5dZN^==O3
+!s85 0
+vif_reg
+Z139 Inc_Z>=cQk7k10YdQF7nVS3
+Z140 VBVeKVkNZVI=zE9]6ZC>D[3
+R14
+R95
+Z141 FCPU/IF/if_reg.v
+R17
+R18
+L0 5
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z142 !s100 Co9fo0>2A>_T:ILUkRBGb3
+!s85 0
+vif_top
+Z143 Ijd>G_A[lI0U];M83[_D2I2
+Z144 Vl_8GWXFN41^]]786oD7c`2
+R14
+R95
+Z145 FCPU/if_top.v
+R17
+R18
+L0 7
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z146 !s100 13fmMd8dU0BLk;5R:7ii_2
+!s85 0
+vmem_ctrl
+Z147 I2JGDEUkJzSJ]9G5_4PR]k3
+Z148 V3[Fkf=QM>IUZGb9L^<4YS2
+R14
+R95
+Z149 FCPU/MEM/mem_ctrl.v
+R17
+R18
+L0 4
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z150 !s100 :W7?Oon1`WaOchb<CkEP31
+!s85 0
+vmem_reg
+Z151 I^Pb:`]hVIE05QY8X>^fIk0
+Z152 V3cFIDC9Z:ANN9VHEKThJi0
+R14
+R95
+Z153 FCPU/MEM/mem_reg.v
+R17
+R18
+L0 5
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z154 !s100 MgloGLdHf7OYL1In7d[aT3
+!s85 0
+vmem_top
+Z155 IWQkkR]c7TQnJ;EBPlW6Jk3
+Z156 V654EAYNUnD4eL>`1[YVF=0
+R14
+R95
+Z157 FCPU/mem_top.v
+R17
+R18
+L0 6
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z158 !s100 Rz[e<PKYoE6jKG[z`hWET3
+!s85 0
+vrom
+Z159 I5LLBhgfccVoEkN?3k`i670
+Z160 VV0QKPn:>akNV9J1>C<n2V0
+R14
+Z161 w1468899052
+Z162 8D:/modelsim/CHIP_TOP/rom.v
+Z163 FD:/modelsim/CHIP_TOP/rom.v
+L0 5
+R19
+r1
+31
+Z164 !s108 1468991692.043000
+Z165 !s107 CPU/STORE/x_s3e_sprom.v|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|header/rom.h|D:/modelsim/CHIP_TOP/rom.v|
+Z166 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/rom.v|
+R23
+R24
+Z167 !s100 kDjF6U64OIAVDonD?=1Ih1
+!s85 0
+vspm
+Z168 Ih`22Jg=4JR]:07dO`j5B:3
+Z169 VgJ02:4N3]52n[RFg`OfS@2
+R14
+R95
+Z170 FCPU/spm.v
+R17
+R18
+L0 4
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z171 !s100 7BX[`IUSTJhzz>m8R5CDb0
+!s85 0
+vtimer
+Z172 ILS;1?YzkLQJXWa>62T>oc0
+Z173 V0GRF]IPJo^9hmhMeWa;:]1
+R14
+Z174 w1468833280
+Z175 8D:/modelsim/CHIP_TOP/timer.v
+Z176 FD:/modelsim/CHIP_TOP/timer.v
+L0 4
+R19
+r1
+31
+R23
+R24
+Z177 !s100 TF9=Z1@7dk^XJH4>X[D2U0
+Z178 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/timer.v|
+Z179 !s108 1468991692.293000
+Z180 !s107 header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|header/uart.h|header/gpio.h|header/timer.h|header/ioglobal.h|D:/modelsim/CHIP_TOP/timer.v|
+!s85 0
+vuart_ctrl
+Z181 I^Zk:;[;fXA_g=Nc=_o8PW2
+Z182 VC0bIjf:efcUg4l?0E4Mef1
+R14
+Z183 w1470038430
+Z184 FIO/uart_ctrl.v
+Z185 8D:/modelsim/CHIP_TOP/uart_top.v
+Z186 FD:/modelsim/CHIP_TOP/uart_top.v
+L0 4
+R19
+r1
+31
+Z187 !s108 1470048703.403000
+Z188 !s107 IO/uart_tx.v|IO/uart_rx.v|IO/uart_ctrl.v|header/uart.h|header/gpio.h|header/timer.h|header/ioglobal.h|header/cpu.h|header/isa.h|header/cpuglobal.h|header/stddef.h|header/global_config.h|header/nettype.h|header/firstglobal.h|D:/modelsim/CHIP_TOP/uart_top.v|
+Z189 !s90 -reportprogress|300|-work|work|-vopt|-nocovercells|D:/modelsim/CHIP_TOP/uart_top.v|
+R23
+R24
+Z190 !s100 FOMVC8A01J:GICfR_g=Pk2
+!s85 0
+vuart_rx
+Z191 Ihha<H:_iI6X@bGFJLW@ch0
+Z192 V=<NcMLBDFBPk7FoQFhnj:0
+R14
+Z193 w1468849572
+Z194 FIO/uart_rx.v
+R185
+R186
+L0 4
+R19
+r1
+31
+Z195 !s108 1468991692.453000
+R188
+R189
+R23
+R24
+Z196 !s100 JkQBmMj7IjkGngoQNJiN42
+!s85 0
+vuart_top
+Z197 I9D^DzzLNzJ;VPHM:@X>mO1
+Z198 V:N]KXoQSBI<U65WC]bMCc2
+R14
+R193
+R185
+R186
+L0 7
+R19
+r1
+31
+R195
+R188
+R189
+R23
+R24
+Z199 !s100 UM[AS:V4GCU`0UaD2_Zc70
+!s85 0
+vuart_tx
+Z200 ImM@Oo@lV;VF2mzn6;Blam0
+Z201 VHJR2XLK0ZOhl=a<o][5?:0
+R14
+R193
+Z202 FIO/uart_tx.v
+R185
+R186
+L0 4
+R19
+r1
+31
+R195
+R188
+R189
+R23
+R24
+Z203 !s100 WCI=Y?DDlL4_DWga2I:FB1
+!s85 0
+vx_s3e_dcm
+Z204 IL>gBz3a:CkC=bH_EG:A@m1
+Z205 VAoLloNQ>`l^Y3c;DoG>=m3
+R14
+R86
+Z206 FCLK/x_s3e_dcm.v
+R87
+R88
+L0 1
+R19
+r1
+31
+R89
+R90
+R91
+R23
+R24
+Z207 !s100 dYM9B`SJD?^RAigNK_7zi0
+!s85 0
+vx_s3e_dpram
+Z208 IQdd8Hk7d5[>?4;A9L][a<2
+Z209 VBJ5QC9Al26hk=1?<RZMJW1
+R14
+R95
+Z210 FCPU/STORE/x_s3e_dpram.v
+R17
+R18
+L0 1
+R19
+r1
+31
+R96
+R21
+R22
+R23
+R24
+Z211 !s100 1BKfhdg<DL;Nbf[zd<l0]3
+!s85 0
+vx_s3e_sprom
+Z212 ILzjnWo]iCbSaiMBT:ggH51
+Z213 Vl>9CbOAKdSW@dmc`k[JL;0
+R14
+R161
+Z214 FCPU/STORE/x_s3e_sprom.v
+R162
+R163
+L0 3
+R19
+r1
+31
+R164
+R165
+R166
+R23
+R24
+Z215 !s100 ZdTRhYYNhFn=I3zT`Y@Cb0
+!s85 0

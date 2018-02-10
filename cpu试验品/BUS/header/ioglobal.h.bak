@@ -1,0 +1,6 @@
+`ifndef __IOGLOBAL_H__
+	`define __IOGLOBAL_H__
+	`include "timer.h"
+	`include "gpio.h"
+	`include "uart.h"
+`endif

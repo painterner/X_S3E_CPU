@@ -1,0 +1,189 @@
+
+`include "header/firstglobal.h"
+`include "header/cpuglobal.h"
+`include "header/rom.h"
+`include "header/spm.h"
+module ctrl(
+	input wire							clk,
+	input wire							reset,
+	
+	//***************************************控制寄存器接口
+	input wire	[`RegAddrBus]			creg_rd_addr,
+	output reg	[`WordDataBus]			creg_rd_data,
+	output reg							ex_mode,
+	//***************************************中断
+	input wire	[`CpuIrqBus]			irq,
+	output reg							int_detect,
+	//***************************************ID/EX流水线寄存器
+	input wire	[`WordAddrBus]			id_pc,
+	//***************************************MEM/WB流水线寄存器
+	input wire	[`WordAddrBus]			mem_pc,
+	input wire							mem_en,
+	input wire							mem_br_flag,
+	input wire	[`CtrlOpBus]			mem_ctrl_op,
+	input wire	[`WordAddrBus]			mem_dst_addr,
+	input wire							mem_gpr_we_,
+	input wire	[`IsaExpBus]			mem_exp_code,
+	output reg	[`WordDataBus]			mem_out,
+	//***************************************流水线的状态
+	input wire							if_busy,
+	input wire							mem_busy,
+	input wire							ld_hazard,
+	//*************************************** 延迟信号
+	input wire							if_stall,
+	input wire							id_stall,
+	input wire							ex_stall,
+	input wire							mem_stall,
+	//*************************************** 刷新信号
+	input wire							if_flush,
+	input wire							id_flush,
+	input wire							ex_flush,
+	input wire							mem_flush,
+	output reg	[`WordAddrBus]			new_pc
+
+);
+
+	reg									int_en;				//0控制寄存器:中断有效
+	reg									pre_exe_mode;       //1控制寄存器:执行模式
+	reg									pre_int_en;         //2控制寄存器:终端有效
+	reg	[`WordAddrBus]					epc;                //3控制寄存器:异常程序计数器
+	reg	[`WordAddrBus]					exp_vector;         //4控制寄存器:异常向量
+	reg [`IsaExpBus]					exp_code;           //5控制寄存器:异常代码
+	reg									dly_flag;           //6控制寄存器:延迟间隙标志位
+	reg	[`CpuIrqBus]					mask;               //7控制寄存器:中断屏蔽
+	reg	[`WordAddrBus]					pre_pc;
+	reg									br_flag;
+	
+	wire	stall				= if_busy|mem_busy;
+	assign  if_stall			= stall|ld_hazard;
+	assign	id_stall			= stall;
+	assign	ex_stall			= stall;
+	assign  mem_stall			= stall;
+	
+	reg		flush;
+	assign	if_flush			= flush;
+	assign 	id_flush			= flush|id_hazard;
+	assign  ex_flush			= flush;
+	assign	mem_flush			= flush;
+	
+	//******************************************************CPU控制信号的生成
+	always @ *	begin
+		new_pc					= `WORD_ADDR_W'H0;
+		flush					= `DISABLE;
+		if(mem_en == `ENABLE)	
+			if(mem_exp_code != `ISA_EXP_NO_EXP)	begin
+				new_pc			= exp_vector;
+				flush			= `ENABLE;
+			end else if(mem_ctrl_op == `CTRL_OP_EXRT)	begin
+				new_pc			= epc;
+				flush			=`ENABLE;
+			end else if(mem_ctrl_op == `CTRL_OP_WRCR)	begin
+				new_pc			= mem_pc;
+				flush			= `ENABLE;
+			end
+	end
+	
+	//******************************************************中断检测
+	always @ * 
+		if((int_en == `ENABLE) && ((|((~mask) & irq)) == `ENABLE))	
+			int_detect			= `ENABLE;
+		else
+			int_detect			= `DISABLE;
+	
+	//******************************************************控制寄存器的读取
+	always @ * 
+		case (creg_rd_addr)	
+			`CREG_ADDR_STATUS		:																  //   0号控制寄存器
+				creg_rd_data		= {{`WORD_DATA_W-2{1'b0}},int_en,exe_mode};		//?减号正确？//  	
+			`CREG_ADDR_PRE_STATUS	:                                                                 //   1号控制寄存器 
+				creg_rd_data		= {{`WORD_DATA_W-2{1'b0}},pre_en,pre_mode};                       //   
+			`CREG_ADDR_PC			:                                                                 //   2号控制寄存器 
+				creg_rd_data		= {id_pc,`BYTE_OFFSET_W'H0};                                      //   
+			`CREG_ADDR_EPC			:                                                                 //   3号控制寄存器 
+				creg_rd_data		= {epc,`BYTE_OFFSET_W'H0};                                        //   
+			`CREG_ADDR_EXP_VECTOR	=                                                                 //   3号控制寄存器 
+				creg_rd_data		= {exp_vector,`BYTE_OFFSET_W'H0};                                 //   
+			//`CREG_ADDR_CAUSE		:                                                                 //   4号控制寄存器 
+			//	creg_rd_data		= {{`WORD_DATA_W-1-`ISA_EXP_W{1'H0}},dly_flag,exp_mode};          //   
+			`CREG_ADDR_INT_MASK		:                                                                 //   5号控制寄存器 
+				creg_rd_data		= {{`WORD_DATA_W-`CPU_IRQ_CH{1'B0}},mask};                        //   
+			`CREG_ADDR_IRQ			:                                                                 //   6号控制寄存器 
+				creg_rd_data		= {{`WORD_DATA_W-`CPU_IRQ_CH{1'B0}},irq};                         //   
+			`CREG_ADDR_ROM_SIZE		:                                                                 //   7号控制寄存器 
+				creg_rd_data		= $unsigned(`ROM_SIZE);                                           //
+			`CREG_ADDR_SPM_SIZE		:                                                                 //  29号控制寄存器 
+				creg_rd_data		= $unsigned(`SPM_SIZE);                                           //
+			`CREG_ADDR_CPU_INFO		:                                                                    //  30号 register
+				creg_rd_data		= {`RELEASE_YEAR,`RELEASE_MONTH,`RELEASE_VERSION,`RELEASE_REVISION}; //
+			default					:                                                                    //  31号 register
+				creg_rd_data		= `WORD_DATA_W'H0;                                                   //
+		endcase
+
+	//******************************************************CPU的控制
+	always @(posedge clk or `RESET_EDGE reset)	
+		if(reset == `RESET_ENABLE)	begin
+			exe_mode				<= #1 `CPU_KERNEL_MODE;
+			int_en					<= #1 `DISABLE;
+			pre_exe_mode			<= #1 `CPU_KERNEL_MODE;
+			pre_int_en				<= #1 `DISABLE;
+			exp_code				<= #1 `ISA_EXP_NO_EXP;
+			mask					<= #1 {`CPU_IRQ_CH{`ENABLE}};
+			dly_flag				<= #1 `DISABLE;
+			epc						<= #1 `WORD_DATA_W'H0;
+			exp_vector				<= #1 `WORD_DATA_W'H0;
+			pre_pc					<= #1 `WORD_DATA_W'H0;
+			br_flag					<= #1 `DISABLE;
+		end else
+			if(mem_en == `ENABLE) && (stall == `DISABLE)	begin				//pc和分支标志位的保存
+				pre_pc				<= #1 mem_pc;
+				br_flag				<= #1 mem_br_flag;
+				if(mem_exp_code != `ISA_EXP_NO_EXP)	begin					//发生异常
+					exe_mode				<= #1 `CPU_KERNEL_MODE;
+			        int_en					<= #1 `DISABLE;
+			        pre_exe_mode			<= #1 exe_mode;
+			        pre_int_en				<= #1 int_en;
+			        exp_code				<= #1 mem_exp_code;
+			        dly_flag				<= #1 br_flag;
+			        epc						<= #1 pre_pc;
+			    end else if(mem_ctrl_op == `CTRL_OP_EXRT)	begin			//exrt命令
+			    	exe_mode				<= #1 pre_exe_mode;
+			    	int_en					<= #1 pre_int_en;
+			    end else if(mem_ctrl_op == `CTRL_OP_WRCR)				//wrcr命令
+			    	case(mem_dst_addr)
+			    		`CREG_ADDR_STATUS		:	begin								//0号控制寄存器
+			    			exe_mode		<= #1 mem_out[`CregExeModeLoc];
+			    			int_en			<= #1 mme_out[`CregIntEnableLoc];
+			    		end
+			    		`CREG_ADDR_STATUS		:	begin								//1号控制寄存器
+			    			pre_exe_mode	<= #1 mem_out[`CregExeModeLoc];    
+			    			pre_int_en		<= #1 mme_out[`CregIntEnableLoc]; 
+			    		end
+			    		`CREG_ADDR_EPC			:										//3号控制寄存器
+			    			epc				<= #1 mem_out[`WordAddrLoc];
+			    		`CREG_ADDR_EXP_VECTOR	:										//4号控制寄存器
+			    			exp_vector		<= #1 mem_out[`WordAddrLoc]; 
+			    		`CREG_ADDR_CAUSE		:										//5号控制寄存器
+			    			dly_flag		<= #1 mem_out[`CregDlyFlagLoc];
+			    			exp_code		<= #1 mem_out[`CregExpCodeLoc];
+			    		`CREG_ADDR_INT_MASK	<= 	:										//6号控制寄存器
+			    			mask			<= #1 mem_out[`CPU_IRQ_CH-1:0];
+			    	endcase
+			end
+					
+endmodule		
+			    	 
+			    			
+			   
+			    	
+					
+			
+				
+				
+			
+		
+		
+			
+			
+	
+	
+	
